@@ -129,14 +129,19 @@ mv ./penultimate-genesis.json ~/.terra/config/genesis.json
 ```
 
 4. Execute GenTx
+Example
 ```sh
-terrad gentx [key-name] [amount-to-stake] \
-    --chain-id phoenix-1 \
-    --min-self-delegation=[] \
-    --security-contact=[] \
-    --moniker=[] \
-    --details=[] \
-    --commission-rate=[] \
+terrad gentx validator 1000000uluna \
+    --chain-id="phoenix-1" \
+    --pubkey=$(terrad tendermint show-validator) \
+    --min-self-delegation="1"\
+    --security-contact="contact@email" \
+    --moniker=SCV \
+    --details="We validate on Terra, and put a description of our services here" \
+    --identity="955CK7FE6B49CT5" \ #from keybase if applicable
+    --commission-rate="0.1" \
+    --commission-max-rate="0.2" \
+    --commission-max-change-rate="0.01"
     ...
 ```
 
